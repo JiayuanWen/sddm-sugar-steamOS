@@ -1,1 +1,2 @@
-Main.qml -linguist-vendored
+Main.qml linguist-vendored
+theme.conf linguist-vendored
