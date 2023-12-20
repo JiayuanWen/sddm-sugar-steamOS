@@ -48,7 +48,8 @@ cp ./theme.conf $COMDIR;
 echo -e "Copying theme config... Done"
 
 echo -ne "Copying preview image... \r"
-cp ./Preview.png $COMDIR;
+mkdir $COMDIR/previews/
+cp ./previews/Preview.png $COMDIR/previews/;
 echo -e "Copying preview image... Done"
 
 echo -ne "Copying sddm test script... \r"
