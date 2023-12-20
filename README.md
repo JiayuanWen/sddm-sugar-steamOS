@@ -6,6 +6,16 @@ Original repository: https://github.com/MarianArlt/sddm-sugar-dark
 <br>
 <br>
 
+## Previews
+<details><summary>Expand</summary>
+
+![Screenshot of SteamOS Sugar theme with custom background 1](previews/Preview1.png? "Interface of the SteamOS Sugar theme with custom background 1")
+![Screenshot of SteamOS Sugar theme with custom background 2](previews/Preview2.png? "Interface of the SteamOS Sugar theme with custom background 2")
+
+</details>
+<br>
+<br>
+
 ## Table of Contents
 * [Dependencies](https://github.com/JiayuanWen/sddm-sugar-steamOS#dependencies)
 * [Installing the theme](https://github.com/JiayuanWen/sddm-sugar-steamOS#installing-the-theme)
@@ -13,11 +23,11 @@ Original repository: https://github.com/MarianArlt/sddm-sugar-dark
 * [Motivate a developer](https://github.com/JiayuanWen/sddm-sugar-steamOS#motivate-a-developer)
 <br>
 
-### Dependencies
+## Dependencies
 
 [`sddm (Version >= 0.18.0)`](https://github.com/sddm/sddm), [`qt5 (Version >= 5.11.0)`](http://doc.qt.io/qt-5/index.html), [`qt5-quickcontrols2 (Version >= 5.11.0)`](http://doc.qt.io/qt-5/qtquickcontrols2-index.html), [`qt5-svg (Version >= 5.11.0)`](https://doc.qt.io/qt-5/qtsvg-index.html)
 
-### Installing the theme
+## Installing the theme
 
 [Download the tar archive](https://github.com/JiayuanWen/sddm-sugar-steamOS/releases) then extract the contents to the theme directory of SDDM:
 ```
