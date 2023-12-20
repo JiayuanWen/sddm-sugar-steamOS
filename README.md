@@ -20,25 +20,29 @@ Original repository: https://github.com/MarianArlt/sddm-sugar-dark
 ### Installing the theme
 
 [Download the tar archive](https://github.com/JiayuanWen/sddm-sugar-steamOS/releases) then extract the contents to the theme directory of SDDM:
-```
-$ sudo tar -xzvf /Path/To/Your/sugar-steamOS.tar.gz -C /usr/share/sddm/themes
+``` bash
+$ sudo tar -xzvf /Path/To/Your/sddm-sugar-steamOS.tar.gz -C /usr/share/sddm/themes
 ```
 This will extract all the files to a folder called "sugar-steamOS" inside of the themes directory of SDDM.  
 
-After that, you will have to point SDDM to the new theme by editing its config file with your favorite editor
-```
+After that, you will have to point SDDM to the new theme by editing its config file with your favorite text editor
+``` bash
 sudo <editor> /etc/sddm.conf.d/sddm.conf
 ```
-If sddm.conf doesn't exist, create one.
+> [!NOTE]
+> If sddm.conf doesn't exist, create one with:
+> ``` bash
+> sudo touch /etc/sddm.conf.d/sddm.conf
+> ```
 
-Find following lines (Add if file is empty).
-```
+Find the following part in `sddm.conf` (Add if file is empty):
+``` 
 [Theme]
 Current=
 ```
-Set `Current=` to `Current=sugar-steamOS`.
-
-You can take a look at the default config file of SDDM for reference: `/usr/lib/sddm/sddm.conf.d/default.conf`.  
+Set `Current=` to `Current=sddm-sugar-steamOS`.
+> [!TIP]
+> You can take a look at the default config file of SDDM for reference: `/usr/lib/sddm/sddm.conf.d/default.conf`.  
 
 <!--
 ### (Optional) Enable background changing
