@@ -1,16 +1,16 @@
 [SddmGreeterTheme]
-Name=Sugar Dark
-Description=The sweetest theme around; Dark!
-Author=Marian Arlt
+Name=SteamOS Sugar
+Description=Surgar theme for SteamOS.
+Author=Marian Arlt, Jiayuan "Weldon" Wen, Valve LLC
 Copyright=Copyright (C) 2018 Marian Arlt
 License=GPL-3.0-or-later
 Type=sddm-theme
-Version=1.2
-Website=https://github.com/MarianArlt/sddm-sugar-dark
+Version=1.1
+Website=https://github.com/JiayuanWen/sddm-sugar-steamOS
 Screenshot=Preview.png
 MainScript=Main.qml
 ConfigFile=theme.conf
 TranslationsDirectory=translations
 Email=marianarlt@icloud.com
-Theme-Id=sugar-dark
+Theme-Id=sugar-steamos
 Theme-API=2.11
