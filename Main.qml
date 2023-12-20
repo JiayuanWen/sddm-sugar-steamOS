@@ -74,8 +74,8 @@ Pane {
             id: formBackground
             anchors.fill: form
             anchors.centerIn: form
-            color: "#25272f"
-            opacity: config.PartialBlur == "true" ? 0.3 : 1
+            color: root.palette.window
+            opacity: config.PartialBlur == "true" ? 0.3 : 0.4
             z: 1
         }
 
@@ -226,6 +226,30 @@ Pane {
         MouseArea {
             anchors.fill: backgroundImage
             onClicked: parent.forceActiveFocus()
+        }
+
+        ShaderEffectSource {
+            id: blurMask
+
+            sourceItem: backgroundImage
+            width: form.width
+            height: parent.height
+            anchors.centerIn: form
+            sourceRect: Qt.rect(x,y,width,height)
+            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+        }
+
+        GaussianBlur {
+            id: blur
+
+            height: parent.height
+            width: config.FullBlur == "true" ? parent.width : form.width
+            source: config.FullBlur == "true" ? backgroundImage : blurMask
+            radius: config.BlurRadius
+            samples: config.BlurRadius * 2 + 1
+            cached: true
+            anchors.centerIn: config.FullBlur == "true" ? parent : form
+            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
         }
     }
 }
