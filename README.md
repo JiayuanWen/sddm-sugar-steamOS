@@ -8,7 +8,10 @@ Original repository: https://github.com/MarianArlt/sddm-sugar-dark
 
 ## Previews
 <details><summary>Expand</summary>
-
+  
+### Default:
+![Screenshot of the interface of the SteamOS Sugar theme for SDDM](previews/Preview.png? "The default interface of the SteamOS Sugar theme for SDDM")
+### With custom backgrounds:
 ![Screenshot of SteamOS Sugar theme with custom background 1](previews/Preview1.png? "Interface of the SteamOS Sugar theme with custom background 1")
 ![Screenshot of SteamOS Sugar theme with custom background 2](previews/Preview2.png? "Interface of the SteamOS Sugar theme with custom background 2")
 
