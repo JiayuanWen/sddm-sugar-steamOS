@@ -181,6 +181,7 @@ Column {
                 radius: config.RoundCorners || 0
             }
             Keys.onReturnPressed: loginButton.clicked()
+            Keys.onEnterPressed: loginButton.clicked()
             KeyNavigation.down: password
             z: 1
 
@@ -229,6 +230,7 @@ Column {
                 radius: config.RoundCorners || 0
             }
             Keys.onReturnPressed: loginButton.clicked()
+            Keys.onEnterPressed: loginButton.clicked()
             KeyNavigation.down: revealSecret
         }
 
@@ -303,6 +305,7 @@ Column {
             }
 
             Keys.onReturnPressed: toggle()
+            Keys.onEnterPressed: toggle()
             KeyNavigation.down: loginButton
 
             background: Rectangle {
@@ -542,6 +545,7 @@ Column {
             ]
 
             Keys.onReturnPressed: clicked()
+            Keys.onEnterPressed: clicked()
             onClicked: sddm.login(username.text, password.text, sessionSelect.selectedSession)
         }
     }
