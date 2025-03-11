@@ -37,7 +37,7 @@ Pane {
     palette.highlight: config.AccentColor
     palette.text: config.MainColor
     palette.buttonText: config.MainColor
-    palette.window: "#25272f"
+    palette.window: config.BackgroundColor
 
     font.family: config.Font
     font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80)
@@ -75,8 +75,8 @@ Pane {
             anchors.fill: form
             anchors.centerIn: form
             color: root.palette.window
-            opacity: config.PartialBlur == "true" ? 0.3 : 0.4
-            z: 1
+            opacity: config.PartialBlur == "true" ? 0.3 : 1
+            z: 3
         }
 
         LoginForm {
@@ -88,7 +88,7 @@ Pane {
             anchors.left: config.FormPosition == "left" ? parent.left : undefined
             anchors.right: config.FormPosition == "right" ? parent.right : undefined
             virtualKeyboardActive: virtualKeyboard.state == "visible" ? true : false
-            z: 1
+            z: 3
         }
 
         Button {
@@ -98,7 +98,6 @@ Pane {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: implicitHeight
             anchors.horizontalCenter: form.horizontalCenter
-            z: 1
             contentItem: Text {
                 text: config.TranslateVirtualKeyboardButton || "Virtual Keyboard"
                 color: parent.visualFocus ? palette.highlight : palette.text
@@ -108,6 +107,7 @@ Pane {
                 id: vkbbg
                 color: "transparent"
             }
+            z: 4
         }
 
         Loader {
@@ -199,15 +199,7 @@ Pane {
             id: backgroundImage
 
             height: parent.height
-            width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
-            anchors.left: leftleft || 
-                          leftcenter ?
-                                formBackground.right : undefined
-
-            anchors.right: rightright ||
-                           rightcenter ?
-                                formBackground.left : undefined
-
+            width: parent.width
             horizontalAlignment: config.BackgroundImageAlignment == "left" ?
                                  Image.AlignLeft :
                                  config.BackgroundImageAlignment == "right" ?
@@ -221,6 +213,16 @@ Pane {
             cache: true
             clip: true
             mipmap: true
+            z: 2
+        }
+
+        Rectangle {
+            id: background
+            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            color: config.BackgroundColor
+            z: 1
         }
 
         MouseArea {
@@ -230,7 +232,7 @@ Pane {
 
         ShaderEffectSource {
             id: blurMask
-
+            z: 2
             sourceItem: backgroundImage
             width: form.width
             height: parent.height
@@ -241,7 +243,7 @@ Pane {
 
         GaussianBlur {
             id: blur
-
+            z: 2
             height: parent.height
             width: config.FullBlur == "true" ? parent.width : form.width
             source: config.FullBlur == "true" ? backgroundImage : blurMask
@@ -251,5 +253,6 @@ Pane {
             anchors.centerIn: config.FullBlur == "true" ? parent : form
             visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
         }
+
     }
 }

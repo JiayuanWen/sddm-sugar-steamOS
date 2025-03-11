@@ -175,8 +175,9 @@ Column {
             horizontalAlignment: TextInput.AlignHCenter
             renderType: Text.QtRendering
             background: Rectangle {
-                color: "transparent"
-                border.color: root.palette.text
+                color: config.TextBoxColor
+                //border.color: root.palette.text
+                border.color: config.TextBoxColor
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
@@ -195,7 +196,7 @@ Column {
                     }
                     PropertyChanges {
                         target: username
-                        color: root.palette.highlight
+                        //color: root.palette.highlight
                     }
                 }
             ]
@@ -224,8 +225,9 @@ Column {
             passwordMaskDelay: config.ForceHideCompletePassword == "true" ? undefined : 1000
             renderType: Text.QtRendering
             background: Rectangle {
-                color: "transparent"
-                border.color: root.palette.text
+                color: config.TextBoxColor
+                //border.color: root.palette.text
+                border.color: config.TextBoxColor
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
@@ -244,7 +246,7 @@ Column {
                 }
                 PropertyChanges {
                     target: password
-                    color: root.palette.highlight
+                    //color: root.palette.highlight
                 }
             }
         ]
@@ -456,7 +458,7 @@ Column {
 
             contentItem: Text {
                 text: parent.text
-                color: "#444"
+                color: root.palette.text
                 font.pointSize: root.font.pointSize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -465,7 +467,14 @@ Column {
 
             background: Rectangle {
                 id: buttonBackground
-                color: "white"
+                width: parent.height
+                height: parent.width
+                anchors.centerIn: parent
+                rotation: 90
+                gradient: Gradient {
+                    GradientStop {position: 0.0; color: config.AccentColor2}
+                    GradientStop {position: 1.0; color: config.AccentColor3}
+                }
                 opacity: 0.2
                 radius: config.RoundCorners || 0
             }
@@ -481,7 +490,6 @@ Column {
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
-                        color: "#444"
                     }
                 },
                 State {
@@ -489,13 +497,11 @@ Column {
                     when: loginButton.hovered
                     PropertyChanges {
                         target: buttonBackground
-                        color: root.palette.highlight
                         opacity: 1
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
                         opacity: 1
-                        color: "#444"
                     }
                 },
                 State {
@@ -503,13 +509,11 @@ Column {
                     when: loginButton.visualFocus
                     PropertyChanges {
                         target: buttonBackground
-                        color: root.palette.highlight
                         opacity: 1
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
                         opacity: 1
-                        color: "#444"
                     }
                 },
                 State {
