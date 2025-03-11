@@ -12,6 +12,6 @@ MainScript=Main.qml
 ConfigFile=theme.conf
 TranslationsDirectory=translations
 Email=wylfredwen@proton.me, marianarlt@icloud.com
-Theme-Id=holoiso-sddm-6
+Theme-Id=holoiso-sddm-plasma6
 Theme-API=2.11
 QtVersion=6
