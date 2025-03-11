@@ -1,7 +1,13 @@
 ![Screenshot of the interface of the SteamOS Sugar theme for SDDM](previews/Preview.png? "The default interface of the SteamOS Sugar theme for SDDM")
 
-# SDDM Sugar theme for SteamOS 
-A modified version of [MarianArlt's Sugar Dark theme for Simple Desktop Display Manager (SDDM)](https://github.com/MarianArlt/sddm-sugar-dark). Based on the aesthetic of Valve's SteamOS. Created for [HoloISO](https://github.com/theVakhovskeIsTaken/holoiso) (And SteamOS 3.0 in the future once Valve release it). 
+# SDDM SteamOS Theme for HoloISO
+A modified version of [MarianArlt's Sugar Dark theme for Simple Desktop Display Manager (SDDM)](https://github.com/MarianArlt/sddm-sugar-dark). 
+
+Created for desktop mode of [HoloISO](https://github.com/theVakhovskeIsTaken/holoiso). Based on the aesthetic of Valve's Steam platform.
+
+> [!IMPORTANT]
+> This branch is for KDE Plasma 5. KDE Plasma 6 version is being developed on main branch.
+
 
 <br>
 <br>
@@ -25,7 +31,10 @@ A modified version of [MarianArlt's Sugar Dark theme for Simple Desktop Display 
 
 ## Dependencies
 
-[`sddm (Version >= 0.18.0)`](https://github.com/sddm/sddm), [`qt5 (Version >= 5.11.0)`](http://doc.qt.io/qt-5/index.html), [`qt5-quickcontrols2 (Version >= 5.11.0)`](http://doc.qt.io/qt-5/qtquickcontrols2-index.html), [`qt5-svg (Version >= 5.11.0)`](https://doc.qt.io/qt-5/qtsvg-index.html)
+* [`sddm (Version >= 0.18.0)`](https://github.com/sddm/sddm)
+* [`qt5 (Version >= 5.11.0)`](http://doc.qt.io/qt-5/index.html) 
+* [`qt5-quickcontrols2 (Version >= 5.11.0)`](http://doc.qt.io/qt-5/qtquickcontrols2-index.html) 
+* [`qt5-svg (Version >= 5.11.0)`](https://doc.qt.io/qt-5/qtsvg-index.html)
 
 ## Installing the theme
 
@@ -65,18 +74,20 @@ Find the variable `ROOTPASSWORD` and set it to your sudo/root password. Save the
 
 Make backgroundChanger.sh autostart on boot or after login. Depending on your DE, you might have an app or feature that manages startup applications (Ex. KDE Plasma has Autostart, Cinnamon has Startup Application, XFCE has Session and Startup), add a new startup app with path to `usr/share/sddm/themes/sugar-steamOS/backgroundChanger.sh`. If you don't have such, you can follow [this tutorial](https://www.baeldung.com/linux/run-script-on-startup) on how to set up a startup script/application.
 -->
+<br>
+<br>
 
 ### Legal Notice
 
 Copyright (C) 2018 [Marian Arlt](https://github.com/MarianArlt).  
 
-Sugar theme for SteamOS is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  
+SteamOS Theme for HoloISO is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  
 
-Sugar theme for SteamOS is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  
+SteamOS Theme for HoloISO is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  
 
 You should have received a copy of the GNU General Public License along with Sugar Dark. If not, see <https://www.gnu.org/licenses/>.
 
-This project is not affiliated with Valve Corporation. All imagery associated with Valve and Steam belong to [Valve, LLC](https://www.valvesoftware.com/en/). 
+This project is not affiliated with Valve Corporation. All imagery associated with Valve and Steam, including logos, fonts, styles, and naming, belong to [Valve, LLC](https://www.valvesoftware.com/en/). 
 
 ### Motivate a developer
 
