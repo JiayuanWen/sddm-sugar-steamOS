@@ -118,7 +118,7 @@ Item {
 
             background: Rectangle {
                 radius: config.RoundCorners / 2
-                color: config.BackgroundColour
+                color: config.BackgroundColor
                 layer.enabled: true
                 layer.effect: DropShadow {
                     transparentBorder: true

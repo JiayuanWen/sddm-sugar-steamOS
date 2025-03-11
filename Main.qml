@@ -17,10 +17,10 @@ Pane {
 
     padding: config.ScreenPadding
     palette.button: "transparent"
-    palette.highlight: config.AccentColour
-    palette.text: config.MainColour
-    palette.buttonText: config.MainColour
-    palette.window: config.BackgroundColour
+    palette.highlight: config.AccentColor
+    palette.text: config.MainColor
+    palette.buttonText: config.MainColor
+    palette.window: config.BackgroundColor
 
     font.family: config.Font
     font.pointSize: config.FontSize !== "" ? config.FontSize :
@@ -62,7 +62,7 @@ Pane {
             anchors.fill: parent
             width: parent.width
             height: parent.height
-            color: config.BackgroundColour
+            color: config.BackgroundColor
             opacity: 1
             z: 0
         }
@@ -229,6 +229,31 @@ Pane {
             anchors.fill: backgroundImage
             onClicked: parent.forceActiveFocus()
         }
+
+        ShaderEffectSource {
+            id: blurMask
+            z: 2
+            sourceItem: backgroundImage
+            width: form.width
+            height: parent.height
+            anchors.centerIn: form
+            sourceRect: Qt.rect(x,y,width,height)
+            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+        }
+
+        GaussianBlur {
+            id: blur
+            z: 2
+            height: parent.height
+            width: config.FullBlur == "true" ? parent.width : form.width
+            source: config.FullBlur == "true" ? backgroundImage : blurMask
+            radius: config.BlurRadius
+            samples: config.BlurRadius * 2 + 1
+            cached: true
+            anchors.centerIn: config.FullBlur == "true" ? parent : form
+            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
+        }
+
     }
 }
 

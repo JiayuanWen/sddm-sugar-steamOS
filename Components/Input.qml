@@ -192,9 +192,9 @@ Column {
                     selectAll()
             }
             background: Rectangle {
-                color: config.TextBoxColour
+                color: config.TextBoxColor
                 //border.color: root.palette.text
-                border.color: config.TextBoxColour
+                border.color: config.TextBoxColor
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
@@ -241,9 +241,9 @@ Column {
             passwordMaskDelay: config.ForceHideCompletePassword == "true" ? undefined : 500
             renderType: Text.QtRendering
             background: Rectangle {
-                color: config.TextBoxColour
+                color: config.TextBoxColor
                 //border.color: root.palette.text
-                border.color: config.TextBoxColour
+                border.color: config.TextBoxColor
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
@@ -469,7 +469,7 @@ Column {
 
             contentItem: Text {
                 text: parent.text
-                color: config.OverrideLoginButtonTextColour != "" ? config.OverrideLoginButtonTextColour : root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white"
+                color: config.OverrideLoginButtonTextColor != "" ? config.OverrideLoginButtonTextColor : root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white"
                 font.pointSize: root.font.pointSize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -483,8 +483,8 @@ Column {
                 anchors.centerIn: parent
                 rotation: 90
                 gradient: Gradient {
-                    GradientStop { position: 0.0; color: config.AccentColour2 }
-                    GradientStop { position: 1.0; color: config.AccentColour3 }
+                    GradientStop { position: 0.0; color: config.AccentColor2 }
+                    GradientStop { position: 1.0; color: config.AccentColor3 }
                 }
                 opacity: 0.2
                 radius: config.RoundCorners || 0
@@ -501,6 +501,7 @@ Column {
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
+                        opacity: 1
                     }
                 },
                 State {
