@@ -19,7 +19,7 @@
 
 import QtQuick 2.11
 import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
 
 Item {
     id: usernameField
@@ -52,7 +52,7 @@ Item {
             width: parent.width
             anchors.horizontalCenter: parent.horizontalCenter
             contentItem: Text {
-                text: model.realName != "" ? model.realName : model.name
+                text: model.name
                 font.pointSize: root.font.pointSize * 0.8
                 font.capitalization: Font.Capitalize
                 color: selectUser.highlightedIndex === index ? "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight : "white"
@@ -76,7 +76,8 @@ Item {
                 icon.width: parent.height * 0.25
                 enabled: false
                 icon.color: root.palette.text
-                icon.source: Qt.resolvedUrl("../Assets/User.svgz")
+                flat: true
+                icon.source: Qt.resolvedUrl("../Assets/User.svg")
         }
 
         background: Rectangle {
@@ -154,7 +155,6 @@ Item {
                 }
             }
         ]
-
     }
 
     TextField {
@@ -193,5 +193,4 @@ Item {
             }
         ]
     }
-
 }

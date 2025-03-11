@@ -19,7 +19,7 @@
 
 import QtQuick 2.11
 import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import Qt5Compat.GraphicalEffects
 
 Item {
     id: sessionButton
@@ -29,12 +29,30 @@ Item {
 
     property var selectedSession: selectSession.currentIndex
     property string textConstantSession
+    property int loginButtonWidth
+    property Control exposeSession: selectSession
 
     ComboBox {
         id: selectSession
 
         hoverEnabled: true
         anchors.left: parent.left
+        Keys.onPressed: {
+            if (event.key == Qt.Key_Up && loginButton.state != "enabled" && !popup.opened)
+                revealSecret.focus = true,
+                revealSecret.state = "focused",
+                currentIndex = currentIndex + 1;
+            if (event.key == Qt.Key_Up && loginButton.state == "enabled" && !popup.opened)
+                loginButton.focus = true,
+                loginButton.state = "focused",
+                currentIndex = currentIndex + 1;
+            if (event.key == Qt.Key_Down && !popup.opened)
+                systemButtons.children[0].focus = true,
+                systemButtons.children[0].state = "focused",
+                currentIndex = currentIndex - 1;
+            if ((event.key == Qt.Key_Left || event.key == Qt.Key_Right) && !popup.opened)
+                popup.open();
+        }
 
         model: sessionModel
         currentIndex: model.lastIndex
@@ -46,7 +64,7 @@ Item {
             contentItem: Text {
                 text: model.name
                 font.pointSize: root.font.pointSize * 0.8
-                color: selectSession.highlightedIndex === index ? "#444" : root.palette.highlight
+                color: selectSession.highlightedIndex === index ? root.palette.highlight.hslLightness >= 0.7 ? "#444444" : "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight.hslLightness >= 0.8 ? "#444444" : root.palette.highlight : "white"
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
             }
@@ -68,6 +86,7 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 3
             font.pointSize: root.font.pointSize * 0.8
+            Keys.onReleased: parent.popup.open()
         }
 
         background: Rectangle {
@@ -84,7 +103,7 @@ Item {
         popup: Popup {
             id: popupHandler
             y: parent.height - 1
-            rightMargin: config.ForceRightToLeft == "true" ? root.padding + sessionButton.width / 2 : undefined
+            x: config.ForceRightToLeft == "true" ? -loginButtonWidth + displayedItem.width : 0
             width: sessionButton.width
             implicitHeight: contentItem.implicitHeight
             padding: 10
@@ -99,16 +118,16 @@ Item {
 
             background: Rectangle {
                 radius: config.RoundCorners / 2
-                color: "#444"
+                color: config.BackgroundColour
                 layer.enabled: true
                 layer.effect: DropShadow {
                     transparentBorder: true
                     horizontalOffset: 0
                     verticalOffset: 0
-                    radius: 100
-                    samples: 201
+                    radius: 20 * config.InterfaceShadowSize
+                    samples: 41 * config.InterfaceShadowSize
                     cached: true
-                    color: "#88000000"
+                    color: Qt.hsla(0,0,0,config.InterfaceShadowOpacity)
                 }
             }
 

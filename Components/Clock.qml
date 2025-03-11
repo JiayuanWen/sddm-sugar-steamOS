@@ -37,10 +37,13 @@ Column {
         id: timeLabel
         anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: root.font.pointSize * 3
+        font.weight: 600
         color: root.palette.text
         renderType: Text.QtRendering
         function updateTime() {
-            text = new Date().toLocaleTimeString(Qt.locale(config.Locale), config.HourFormat == "long" ? Locale.LongFormat : config.HourFormat !== "" ? config.HourFormat : Locale.ShortFormat)
+            text = new Date().toLocaleTimeString(Qt.locale(config.Locale),
+                config.HourFormat == "long" ? Locale.LongFormat :
+                    config.HourFormat !== "" ? config.HourFormat : Locale.ShortFormat)
         }
     }
 
@@ -49,8 +52,10 @@ Column {
         anchors.horizontalCenter: parent.horizontalCenter
         color: root.palette.text
         renderType: Text.QtRendering
-        function updateTime() {
-            text = new Date().toLocaleDateString(Qt.locale(config.Locale), config.DateFormat == "short" ? Locale.ShortFormat : config.DateFormat !== "" ? config.DateFormat : Locale.LongFormat)
+        function updateDate() {
+            text = new Date().toLocaleDateString(Qt.locale(config.Locale),
+                config.DateFormat == "short" ? Locale.ShortFormat :
+                    config.DateFormat !== "" ? config.DateFormat : Locale.LongFormat)
         }
     }
 
@@ -59,13 +64,13 @@ Column {
         repeat: true
         running: true
         onTriggered: {
-            dateLabel.updateTime()
+            dateLabel.updateDate()
             timeLabel.updateTime()
         }
     }
 
     Component.onCompleted: {
-        dateLabel.updateTime()
+        dateLabel.updateDate()
         timeLabel.updateTime()
     }
 }

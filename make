@@ -73,7 +73,7 @@ else
     echo
     echo -e "${RED}'Tar' not installed. Refer to https://www.tecmint.com/install-zip-and-unzip-in-linux/ to install said tool for your distro.${RESETFONT}"
     echo
-    rm -rf ./classic\ \(white\)
+    rm -rf ./sddm-sugar-steamOS
     exit 1
 fi
 

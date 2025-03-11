@@ -1,26 +1,9 @@
-//
-// This file is part of Sugar Dark, a theme for the Simple Display Desktop Manager.
-//
-// Copyright 2018 Marian Arlt
-//
-// Sugar Dark is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Sugar Dark is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Sugar Dark. If not, see <https://www.gnu.org/licenses/>.
-//
 
+import Qt5Compat.GraphicalEffects
 import QtQuick 2.11
-import QtQuick.Layouts 1.11
 import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import QtQuick.Layouts 1.11
+import QtQuick.Window 2.11
 import "Components"
 
 Pane {
@@ -34,35 +17,39 @@ Pane {
 
     padding: config.ScreenPadding
     palette.button: "transparent"
-    palette.highlight: config.AccentColor
-    palette.text: config.MainColor
-    palette.buttonText: config.MainColor
-    palette.window: "#25272f"
+    palette.highlight: config.AccentColour
+    palette.text: config.MainColour
+    palette.buttonText: config.MainColour
+    palette.window: config.BackgroundColour
 
     font.family: config.Font
-    font.pointSize: config.FontSize !== "" ? config.FontSize : parseInt(height / 80)
+    font.pointSize: config.FontSize !== "" ? config.FontSize :
+        Screen.primaryOrientation == Qt.PortraitOrientation ? parseInt(height / 160) : parseInt(height / 80)
     focus: true
 
     property bool leftleft: config.HaveFormBackground == "true" &&
                             config.PartialBlur == "false" &&
                             config.FormPosition == "left" &&
-                            config.BackgroundImageAlignment == "left"
+                            config.BackgroundImageHAlignment == "left"
 
     property bool leftcenter: config.HaveFormBackground == "true" &&
                               config.PartialBlur == "false" &&
                               config.FormPosition == "left" &&
-                              config.BackgroundImageAlignment == "center"
+                              config.BackgroundImageHAlignment == "center"
 
     property bool rightright: config.HaveFormBackground == "true" &&
                               config.PartialBlur == "false" &&
                               config.FormPosition == "right" &&
-                              config.BackgroundImageAlignment == "right"
+                              config.BackgroundImageHAlignment == "right"
 
     property bool rightcenter: config.HaveFormBackground == "true" &&
                                config.PartialBlur == "false" &&
                                config.FormPosition == "right" &&
-                               config.BackgroundImageAlignment == "center"
-
+                               config.BackgroundImageHAlignment == "center"
+    Component.onCompleted: {
+        Orientation.getOrientation()
+        console.log('called orientation')
+    }
     Item {
         id: sizeHelper
 
@@ -71,24 +58,45 @@ Pane {
         width: parent.width
 
         Rectangle {
+            id: background
+            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            color: config.BackgroundColour
+            opacity: 1
+            z: 0
+        }
+
+        Rectangle {
+            id: tintLayer
+            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            color: "#000000"
+            opacity: config.DimBackgroundImage
+            z: 3
+        }
+
+        Rectangle {
             id: formBackground
             anchors.fill: form
             anchors.centerIn: form
             color: root.palette.window
-            opacity: config.PartialBlur == "true" ? 0.3 : 0.4
-            z: 1
+            visible: config.HaveFormBackground == "true" ? true : false
+            opacity: config.PartialBlur == "true" ? 0.5 : 1
+            z: 3
         }
 
         LoginForm {
             id: form
-
-            height: virtualKeyboard.state == "visible" ? parent.height - virtualKeyboard.implicitHeight : parent.height
+            height: parent.height
+            // If in portrait orientation we should take up half instead of 40% of the screen to avoid crowding
             width: parent.width / 2.5
             anchors.horizontalCenter: config.FormPosition == "center" ? parent.horizontalCenter : undefined
             anchors.left: config.FormPosition == "left" ? parent.left : undefined
             anchors.right: config.FormPosition == "right" ? parent.right : undefined
             virtualKeyboardActive: virtualKeyboard.state == "visible" ? true : false
-            z: 1
+            z: 3
         }
 
         Button {
@@ -197,23 +205,16 @@ Pane {
 
         Image {
             id: backgroundImage
-
             height: parent.height
-            width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
-            anchors.left: leftleft || 
-                          leftcenter ?
-                                formBackground.right : undefined
-
-            anchors.right: rightright ||
-                           rightcenter ?
-                                formBackground.left : undefined
-
-            horizontalAlignment: config.BackgroundImageAlignment == "left" ?
+            horizontalAlignment: config.BackgroundImageHAlignment == "left" ?
                                  Image.AlignLeft :
-                                 config.BackgroundImageAlignment == "right" ?
-                                 Image.AlignRight :
-                                 config.BackgroundImageAlignment == "center" ?
-                                 Image.AlignHCenter : undefined
+                                 config.BackgroundImageHAlignment == "right" ?
+                                 Image.AlignRight : Image.AlignHCenter
+
+            verticalAlignment: config.BackgroundImageVAlignment == "top" ?
+                               Image.AlignTop :
+                               config.BackgroundImageVAlignment == "bottom" ?
+                               Image.AlignBottom : Image.AlignVCenter
 
             source: config.background || config.Background
             fillMode: config.ScaleImageCropped == "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
@@ -221,35 +222,13 @@ Pane {
             cache: true
             clip: true
             mipmap: true
+            z: 2
         }
 
         MouseArea {
             anchors.fill: backgroundImage
             onClicked: parent.forceActiveFocus()
         }
-
-        ShaderEffectSource {
-            id: blurMask
-
-            sourceItem: backgroundImage
-            width: form.width
-            height: parent.height
-            anchors.centerIn: form
-            sourceRect: Qt.rect(x,y,width,height)
-            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
-        }
-
-        GaussianBlur {
-            id: blur
-
-            height: parent.height
-            width: config.FullBlur == "true" ? parent.width : form.width
-            source: config.FullBlur == "true" ? backgroundImage : blurMask
-            radius: config.BlurRadius
-            samples: config.BlurRadius * 2 + 1
-            cached: true
-            anchors.centerIn: config.FullBlur == "true" ? parent : form
-            visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false
-        }
     }
 }
+
