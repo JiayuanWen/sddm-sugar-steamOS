@@ -1,4 +1,4 @@
-![Screenshot of the interface of the SteamOS Sugar theme for SDDM](previews/Preview.png? "The default interface of the SteamOS Sugar theme for SDDM")
+![Screenshot of the interface of the SteamOS theme for SDDM](previews/Preview.png? "The default interface of the SteamOS Sugar theme for SDDM")
 
 # SDDM SteamOS Theme for HoloISO
 A modified version of [MarianArlt's Sugar Dark theme for Simple Desktop Display Manager (SDDM)](https://github.com/MarianArlt/sddm-sugar-dark). 
@@ -15,18 +15,18 @@ Created for desktop mode of [HoloISO](https://github.com/theVakhovskeIsTaken/hol
 ## Previews
 
 ### Default:
-![Screenshot of the interface of the SteamOS Sugar theme for SDDM](previews/Preview.png? "The default interface of the SteamOS Sugar theme for SDDM")
+![Screenshot of the interface of the SteamOS theme for SDDM](previews/Preview.png? "The default interface of the SteamOS Sugar theme for SDDM")
 ### With custom backgrounds:
-![Screenshot of SteamOS Sugar theme with custom background 1](previews/Preview1.png? "Interface of the SteamOS Sugar theme with custom background 1")
-![Screenshot of SteamOS Sugar theme with custom background 2](previews/Preview2.png? "Interface of the SteamOS Sugar theme with custom background 2")
+![Screenshot of SteamOS theme with custom background 1](previews/Preview1.png? "Interface of the SteamOS Sugar theme with custom background 1")
+![Screenshot of SteamOS theme with custom background 2](previews/Preview2.png? "Interface of the SteamOS Sugar theme with custom background 2")
 <br>
 <br>
 
 ## Table of Contents
-* [Dependencies](https://github.com/JiayuanWen/sddm-sugar-steamOS#dependencies)
-* [Installing the theme](https://github.com/JiayuanWen/sddm-sugar-steamOS#installing-the-theme)
-* [Legal Notice](https://github.com/JiayuanWen/sddm-sugar-steamOS#legal-notice)
-* [Motivate a developer](https://github.com/JiayuanWen/sddm-sugar-steamOS#motivate-a-developer)
+* [Dependencies](https://github.com/JiayuanWen/holoiso-sddm-steamos-theme#dependencies)
+* [Installing the theme](https://github.com/JiayuanWen/holoiso-sddm-steamos-theme#installing-the-theme)
+* [Legal Notice](https://github.com/JiayuanWen/holoiso-sddm-steamos-theme#legal-notice)
+* [Motivate a developer](https://github.com/JiayuanWen/holoiso-sddm-steamos-theme#motivate-a-developer)
 <br>
 
 ## Dependencies
@@ -38,11 +38,11 @@ Created for desktop mode of [HoloISO](https://github.com/theVakhovskeIsTaken/hol
 
 ## Installing the theme
 
-[Download the tar archive](https://github.com/JiayuanWen/sddm-sugar-steamOS/releases) then extract the contents to the theme directory of SDDM:
+[Download the tar archive](https://github.com/JiayuanWen/holoiso-sddm-steamos-theme/releases) then extract the contents to the theme directory of SDDM:
 ```
-$ sudo tar -xzvf /Path/To/Your/sddm-sugar-steamOS.tar.gz -C /usr/share/sddm/themes
+$ sudo tar -xzvf /Path/To/Your/holoiso-sddm-steamos-theme.tar.gz -C /usr/share/sddm/themes
 ```
-This will extract all the files to a folder called "sddm-sugar-steamOS" inside of the themes directory of SDDM.  
+This will extract all the files to a folder called "holoiso-sddm-steamOS" inside of the themes directory of SDDM.  
 
 After that, you will have to point SDDM to the new theme by editing its config file with your favorite editor
 ```
@@ -55,7 +55,7 @@ Find following lines (Add if file is empty).
 [Theme]
 Current=
 ```
-Set `Current=` to `Current=sddm-sugar-steamOS`.
+Set `Current=` to `Current=holoiso-sddm-steamos`.
 
 You can take a look at the default config file of SDDM for reference: `/usr/lib/sddm/sddm.conf.d/default.conf`.  
 

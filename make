@@ -10,13 +10,13 @@ echo
 # Create a folder for archiving later
 COMDIR=""
 echo -ne "Checking & cleaning remaining folders from previous compilation... \r"
-if [ -d ./sddm-sugar-steamOS ]; then
-	rm -r ./sddm-sugar-steamOS
+if [ -d ./holoiso-sddm-steamOS ]; then
+	rm -r ./holoiso-sddm-steamOS
 fi
 echo -e "Checking & cleaning remaining folders from previous compilation... Done"
 echo -ne "Creating folder for compress... \r"
-mkdir ./sddm-sugar-steamOS;
-COMDIR="./sddm-sugar-steamOS"
+mkdir ./holoiso-sddm-steamOS;
+COMDIR="./holoiso-sddm-steamOS"
 echo  -e "Creating folder for compress... Done"
 
 echo -ne "Copying LICENSE... \r"
@@ -53,7 +53,7 @@ cp ./previews/Preview.png $COMDIR/previews/;
 echo -e "Copying preview image... Done"
 
 echo -ne "Copying sddm test script... \r"
-cp ./SddmTest.sh $COMDIR;
+cp ./sddmtest $COMDIR;
 echo -e "Copying sddm test script... Done"
 
 echo -ne "Copying Asset folder... \r"
@@ -67,20 +67,19 @@ echo -e "Copying Components folder... Done"
 # Write folder to archive
 if type tar > /dev/null; then
     echo -ne "Write sddm theme to archive... \r"
-    tar -cvzf sddm-surgar-steamOS.tar.gz ./sddm-sugar-steamOS
+    tar -cvzf holoiso-sddm-steamOS.tar.gz ./holoiso-sddm-steamOS
     echo -e "Write sddm theme to archive... Done"
 else
     echo
     echo -e "${RED}'Tar' not installed. Refer to https://www.tecmint.com/install-zip-and-unzip-in-linux/ to install said tool for your distro.${RESETFONT}"
     echo
-    rm -rf ./sddm-sugar-steamOS
+    rm -rf ./holoiso-sddm-steamOS
     exit 1
 fi
 
 # Post-script clean up
-rm -rf ./sddm-sugar-steamOS
+rm -rf ./holoiso-sddm-steamOS
 echo
 echo -e "${GREEN}SDDM theme archived without error. An tar file has been created in repo's root directory.${RESETFONT}"
 echo
 exit 0
-
