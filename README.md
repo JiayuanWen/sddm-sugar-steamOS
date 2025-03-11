@@ -6,7 +6,7 @@ A modified version of [MarianArlt's Sugar Dark theme for Simple Desktop Display 
 Created for desktop mode of [HoloISO](https://github.com/theVakhovskeIsTaken/holoiso). Based on the aesthetic of Valve's Steam platform.
 
 > [!IMPORTANT]
-> Main branch code is for KDE Plamsa 6. For KDE Plasma 5, see `kde5` branch. 
+> Main branch is for KDE Plamsa 6. KDE Plasma 5 version is being developed on `kde5` branch. 
 
 <br>
 <br>
